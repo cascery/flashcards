@@ -1,46 +1,50 @@
-// lib/screens/home_screen/widgets/group_widget.dart
-
 import 'package:flutter/material.dart';
 
 class GroupWidget extends StatelessWidget {
-  final String imagePath;
   final String title;
   final String subtitle;
-  final int count;
+  final String date;
 
-  const GroupWidget({
-    Key? key,
-    required this.imagePath,
+  GroupWidget({
     required this.title,
     required this.subtitle,
-    required this.count,
-  }) : super(key: key);
+    required this.date,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Container(
-        padding: EdgeInsets.all(16),
+       
+        padding: const EdgeInsets.all(16),
+        margin:const EdgeInsets.all(10) ,
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
+          color: Color(0xFF483E71),
+          borderRadius: BorderRadius.circular(30),
           border: Border.all(color: Colors.black),
         ),
-        child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(imagePath, width: 40, height: 40),
-            SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                  Text(subtitle, style: TextStyle(fontSize: 14, color: Colors.grey)),
-                ],
+            Text(
+              title,
+              style: Theme.of(context).textTheme.titleLarge,
+              
+            ),
+            const SizedBox(height: 8),
+            Text(
+              subtitle,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            const SizedBox(height: 8),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Text(
+                date,
+                style: const TextStyle(fontSize: 12, color: Colors.grey),
               ),
             ),
-            Text(count.toString(), style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           ],
         ),
       ),
